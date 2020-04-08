@@ -1,24 +1,24 @@
 from django.shortcuts import render
-#from django.http import HttpResponse
+from .models import Post
 
-posts = [
-	{
-		'author': 'Ruxi Stancioi',
-		'title': 'Ruxi afis',
-		'content': 'primul proiect',
-		'date': '8 Aprilie'
-	},
-	{
-		'author': 'Angi',
-		'title': 'Angi gogosi',
-		'content': 'reteta',
-		'date': '10 Aprilie'
-	}
-]
+# posts = [
+# 	{
+# 		'author': 'Ruxi Stancioi',
+# 		'title': 'Ruxi afis',
+# 		'content': 'primul proiect',
+# 		'date': '8 Aprilie'
+# 	},
+# 	{
+# 		'author': 'Angi',
+# 		'title': 'Angi gogosi',
+# 		'content': 'reteta',
+# 		'date': '10 Aprilie'
+# 	}
+# ]
 # Create your views here.
 def home(request):
 	context = {
-		'posts': posts
+		'posts': Post.objects.all()
 	}
 	return render(request, 'avizier/home.html', context)
 
