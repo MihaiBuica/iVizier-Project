@@ -22,5 +22,20 @@ def home(request):
 	}
 	return render(request, 'avizier/home.html', context)
 
-def about(request):
-	return render(request, 'avizier/about.html')#HttpResponse('<h1>Afis about</h1>')
+def targulitc(request):
+	return render(request, 'avizier/targulitc.html')#HttpResponse('<h1>Afis about</h1>')
+
+def bestem(request):
+	return render(request, 'avizier/bestem.html')
+
+def hackitall(request):
+	return render(request, 'avizier/hackitall.html')
+
+def eli_np(request):
+	return render(request, 'avizier/eli-np.html')
+
+def _3dupb(request):
+	return render(request, 'avizier/3dupb.html')
+
+def acs(request):
+	return render(request, 'avizier/acs.html')
