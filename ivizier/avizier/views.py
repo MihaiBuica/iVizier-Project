@@ -23,7 +23,7 @@ def home(request):
 	return render(request, 'avizier/home.html', context)
 
 def targulitc(request):
-	return render(request, 'avizier/targulitc.html')#HttpResponse('<h1>Afis about</h1>')
+	return render(request, 'avizier/targulitc.html') # HttpResponse('<h1>Afis about</h1>')
 
 def bestem(request):
 	return render(request, 'avizier/bestem.html')

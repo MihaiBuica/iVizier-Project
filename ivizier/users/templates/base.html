@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
 
     {% if title %}
-        <title>iVizier - {{ title }}</title>
+        <title>iVizier - {{ title }}</title>F
     {% else %}
         <title>iVizier</title>
     {% endif %}
@@ -29,12 +29,17 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'avizier-home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'avizier-about' %}">About</a>
+              <a class="nav-item nav-link" href="{% url 'avizier-home' %}">About</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
+                {% if user.is_authenticated %}
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Logut</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                {% endif %}
             </div>
           </div>
         </div>
