@@ -32,7 +32,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </a>
     <!-- <img src="static/targulIT&C.jpg" style="width:45%;" class="w3-round"><br><br> -->
     {% if user.is_authenticated %}
-      <img src="{% static "avizier/images/profile.jpg" %}" alt="My image" style="width:45%;" class="w3-round"><br><br>
+      <img src="{{ user.profile.image.url }}" alt="My image" style="width:45%;" class="w3-round"><br><br>
       <h4><b>{{ user.username }}</b></h4>
     {% else %}
       <img src="{% static "avizier/images/profile.jpg" %}" alt="My image" style="width:45%;" class="w3-round"><br><br>
