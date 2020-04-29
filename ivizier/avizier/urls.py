@@ -8,5 +8,5 @@ urlpatterns = [
     path('eli-np/', views.eli_np, name='eli-np-about'),
     path('hackitall/', views.hackitall, name='hackitall-about'),
     path('acs/', views.acs, name='acs-about'),
-    path('3dupb/', views._3dupb, name='3dupn-about')
+    path('3dupb/', views._3dupb, name='3dupb-about')
 ]
