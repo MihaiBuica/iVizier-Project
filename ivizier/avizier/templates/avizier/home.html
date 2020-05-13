@@ -85,16 +85,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   
   <!-- First Photo Grid-->
   <div class="w3-row-padding">
+    {% for post in posts %}
     <div class="w3-third w3-container w3-margin-bottom">
-      <a href="/targulitc">
-        <img src="{% static "avizier/images/targulitc.jpg" %}" alt="Norway" style="width:100%" class="w3-hover-opacity">
+      <a href="{{ post.url }}">
+        <img src="{% static "avizier/images/no-image.png" %}" alt="Norway" style="width:100%" class="w3-hover-opacity">
       </a>
       <div class="w3-container w3-white">
-        <p><b>Târgul IT&C</b></p>
-        <p>Peste 45 de companii de renume din România și din afară își vor face simțită prezența în cadrul evenimentului din acest an, oferind pasionaților de domeniul IT&C stagii de practică, internshipuri, joburi de junior și nu numai! </p>
+        <p><b>{{ post.title }}</b></p>
+        <p>{{ post.content }}</p>
       </div>
     </div>
-    <div class="w3-third w3-container">
+    {% endfor %}
+  </div>
+    <!--<div class="w3-third w3-container">
       <a href="/bestem">
         <img src="{% static "avizier/images/bestem.jpg" %}" alt="Norway" style="width:100%" class="w3-hover-opacity">
       </a>
@@ -116,10 +119,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </div>
     </div>
     
-  </div>
+  </div>-->
   
   <!-- Second Photo Grid-->
-  <div class="w3-row-padding">
+  <!--<div class="w3-row-padding">
     <div class="w3-third w3-container w3-margin-bottom">
       <a href="/eli-np">
         <img src="{% static "avizier/images/eli-np.png" %}" alt="Norway" style="width:100%" class="w3-hover-opacity">
@@ -157,7 +160,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <p>Concursul de admitere pentru studiile de licență la Facultatea de Automatică și Calculatoare, începând din anul universitar 2020-2021, constă în două probe scrise: proba 1 - Algebră şi elemente de analiză matematică, proba 2 – la alegere între Fizică și Informatică.</p>
       </div>
     </div>
-  </div>
+  </div>-->
 
   <!-- Pagination -->
   <div class="w3-center w3-padding-32">
