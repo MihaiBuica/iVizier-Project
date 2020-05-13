@@ -43,13 +43,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>AVIZIER</a>
     <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw w3-margin-right"></i>ABOUT</a>
     {% if user.is_authenticated %}
+      {% if perms.avizier %}
+          <a href="{% url 'add-post' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-clipboard fa-fw w3-margin-right"></i>ADD POST</a>
+      {% endif %}
       <a href="{% url 'profile' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>EDIT PROFILE</a>
       <a href="{% url 'logout' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw w3-margin-right"></i>LOGOUT</a>
     {% else %}
       <a href="{% url 'login' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-in fa-fw w3-margin-right"></i>LOGIN</a>
       <a href="{% url 'register' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>REGISTER</a>
     {% endif %}
-      <a href="{% url 'add-post' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-clipboard fa-fw w3-margin-right"></i>ADD POST</a>
   </div>
   <div class="w3-panel w3-large">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
