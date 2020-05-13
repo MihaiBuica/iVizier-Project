@@ -49,6 +49,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <a href="{% url 'login' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-in fa-fw w3-margin-right"></i>LOGIN</a>
       <a href="{% url 'register' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>REGISTER</a>
     {% endif %}
+      <a href="{% url 'add-post' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-clipboard fa-fw w3-margin-right"></i>ADD POST</a>
   </div>
   <div class="w3-panel w3-large">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -76,24 +77,24 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-section w3-bottombar w3-padding-16">
       <span class="w3-margin-right">Filter:</span> 
       <button class="w3-button w3-black">ALL</button>
-      <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Hackathons</button>
+      <button class="w3-button w3-white" onclick=""><i class="fa fa-diamond w3-margin-right"></i>Hackathons</button>
       <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Secretariat</button>
       <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Jobs</button>
     </div>
     </div>
   </header>
-  
+
   <!-- First Photo Grid-->
   <div class="w3-row-padding">
     {% for post in posts %}
     <div class="w3-third w3-container w3-margin-bottom">
       <a href="{{ post.url }}">
-        <img src="{% static "avizier/images/no-image.png" %}" alt="Norway" style="width:100%" class="w3-hover-opacity">
+        <img src="{{ post.image }}" alt="Atat s-a putut" style="width:100%" class="w3-hover-opacity">
+        <div class="w3-container w3-white">
+          <p><b>{{ post.title }}</b></p>
+          <p>{{ post.content }}</p>
+        </div>
       </a>
-      <div class="w3-container w3-white">
-        <p><b>{{ post.title }}</b></p>
-        <p>{{ post.content }}</p>
-      </div>
     </div>
     {% endfor %}
   </div>
