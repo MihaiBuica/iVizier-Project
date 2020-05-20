@@ -7,7 +7,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='avizier-home'),
-    # path('add-post/', views.PostCreateView.as_view(template_name='add-post.html'), name='add-post'),
+    path('an1/', views.an1, name="an1"),
+    path('an2/', views.an2, name="an2"),
+    path('an3/', views.an3, name="an3"),
+    path('an4/', views.an4, name="an4"),
+    path('anpub/', views.anpub, name="anpub"),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('add-post/', PostCreateView.as_view(), name='post-create'),
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),

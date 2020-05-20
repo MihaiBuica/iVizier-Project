@@ -14,6 +14,7 @@ class Post(models.Model):
     # delete the post if the user is deleted
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.png', upload_to='events')
+    tag = models.CharField(blank=True, max_length=10)
 
     def __str__(self):
         return self.title

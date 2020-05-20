@@ -40,7 +40,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     {% endif %}
   </div>
   <div class="w3-bar-block">
-    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>AVIZIER</a>
+    <a href="{% url 'avizier-home' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>AVIZIER</a>
     <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw w3-margin-right"></i>ABOUT</a>
     {% if user.is_authenticated %}
       {% if perms.avizier %}
@@ -77,11 +77,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-container">
     <h1><b>Avizier Online</b></h1>
     <div class="w3-section w3-bottombar w3-padding-16">
-      <span class="w3-margin-right">Filter:</span> 
+      <span class="w3-margin-right">Filter:</span>
       <button class="w3-button w3-black">ALL</button>
-      <button class="w3-button w3-white" onclick=""><i class="fa fa-diamond w3-margin-right"></i>Hackathons</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Secretariat</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Jobs</button>
+      {% if user.is_authenticated %}
+      <button class="w3-button w3-white" onclick=""><i class="fa fa-diamond w3-margin-right"></i><a href="{% url 'an1' %}">Anul 1</a></button>
+      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i><a href="{% url 'an2' %}">Anul 2</a></button>
+      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i><a href="{% url 'an3' %}">Anul 3</a></button>
+      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i><a href="{% url 'an4' %}">Anul 4</a></button>
+      {% endif %}
     </div>
     </div>
   </header>

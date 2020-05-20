@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import (ListView, DetailView, CreateView, UpdateView, DeleteView)
 from .models import Post
 
+
 # posts = [
 # 	{
 #  		'title': 'TârgulIT&C',
@@ -50,60 +51,85 @@ from .models import Post
 
 # Create your views here.
 def home(request):
-	context = {
-		'posts': Post.objects.all()
-	}
-	return render(request, 'avizier/home.html', context)
+    context = {
+        'posts': Post.objects.all()
+    }
+    return render(request, 'avizier/home.html', context)
+
 
 class PostListView(ListView):
-	model = Post
-	template_name = 'avizier/home.html'
-	context_object_name = 'posts'
-	ordering = ['-date_posted']
+    model = Post
+    template_name = 'avizier/home.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
 
 
 class PostDetailView(DetailView):
-	model = Post
+    model = Post
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
-	model = Post
-	fields = ['title', 'content', 'image']
+    model = Post
+    fields = ['title', 'content', 'image', 'tag']
 
-	def form_valid(self, form):
-		form.instance.author = self.request.user
-		return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-	model = Post
-	fields = ['title', 'content', 'image']
+    model = Post
+    fields = ['title', 'content', 'image', 'tag']
 
-	def form_valid(self, form):
-		form.instance.author = self.request.user
-		return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
-	def test_func(self):
-		post = self.get_object()
-		if self.request.user == post.author:
-			return True
-		return False
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-	model = Post
-	success_url = '/'
+    model = Post
+    success_url = '/'
 
-	def test_func(self):
-		post = self.get_object()
-		if self.request.user == post.author:
-			return True
-		return False
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
 
 
 def about(request):
-	return render(request, 'announcements/about.html')
+    return render(request, 'avizier/about.html')
 
+
+def an1(request):
+    qa1 = Post.objects.filter(tag='#an1')
+    return render(request, 'avizier/an1.html', {'qa1': qa1})
+
+
+def an2(request):
+    qa1 = Post.objects.filter(tag='#an2')
+    return render(request, 'avizier/an2.html', {'qa1': qa1})
+
+
+def an3(request):
+    qa1 = Post.objects.filter(tag='#an3')
+    return render(request, 'avizier/an3.html', {'qa1': qa1})
+
+
+def an4(request):
+    qa1 = Post.objects.filter(tag='#an4')
+    return render(request, 'avizier/an4.html', {'qa1': qa1})
+
+
+def anpub(request):
+    qa1 = Post.objects.filter(tag='#public')
+    return render(request, 'avizier/anpub.html', {'qa1': qa1})
 
 # def targulitc(request):
 # 	return render(request, 'avizier/targulitc.html') # HttpResponse('<h1>Afis about</h1>')
