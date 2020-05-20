@@ -44,7 +44,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw w3-margin-right"></i>ABOUT</a>
     {% if user.is_authenticated %}
       {% if perms.avizier %}
-          <a href="{% url 'add-post' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-clipboard fa-fw w3-margin-right"></i>ADD POST</a>
+          <a href="{% url 'post-create' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-clipboard fa-fw w3-margin-right"></i>ADD POST</a>
       {% endif %}
       <a href="{% url 'profile' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>EDIT PROFILE</a>
       <a href="{% url 'logout' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw w3-margin-right"></i>LOGOUT</a>
@@ -90,8 +90,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   <div class="w3-row-padding">
     {% for post in posts %}
     <div class="w3-third w3-container w3-margin-bottom">
-      <a href="{{ post.url }}">
-        <img src="{{ post.image }}" alt="Atat s-a putut" style="width:100%" class="w3-hover-opacity">
+      {% if user.is_authenticated %}
+      <a href="{% url 'post-detail' post.id %}">
+      {% endif %}
+        <img src="{{ post.image.url }}" alt="Atat s-a putut" style="width:100%" class="w3-hover-opacity">
         <div class="w3-container w3-white">
           <p><b>{{ post.title }}</b></p>
           <p>{{ post.content }}</p>
